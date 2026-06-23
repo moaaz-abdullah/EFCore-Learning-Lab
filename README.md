@@ -28,25 +28,6 @@ It is not a production-ready application — it is mainly used for practicing an
 
 ---
 
-## 📁 Project Structure
-
-EFCore/
-│
-├── Models/
-│ ├── Student.cs
-│ ├── Grade.cs
-│ └── Department.cs
-│
-├── AppDbContext.cs
-├── Connections.cs
-├── Program.cs
-│
-├── Migrations/
-│ ├── StudentTable.cs
-│ └── OneToOneRelation.cs
-
----
-
 ## 🧩 Database Models
 
 ### Student
