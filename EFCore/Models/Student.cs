@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCore.Models
 {
@@ -22,5 +23,11 @@ namespace EFCore.Models
 
         // Navigation property for the related Grade entity
         public Grade GradeDetails { get; set; } = null!;
+
+        [ForeignKey("Department")]
+        public int DepartmentId { get; set; } // Foreign key for Department
+
+        // Navigation property for the related Department entity
+        public Department Department { get; set; } = null!;
     }
 }
