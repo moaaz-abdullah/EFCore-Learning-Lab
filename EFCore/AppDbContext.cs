@@ -19,5 +19,8 @@ namespace EFCore
 
         public DbSet<Models.Grade> Grades { get; set; }
 
+        public DbSet<Models.Book> Books { get; set; }
+
+        public DbSet<Models.StudentBook> StudentBooks { get; set; }
     }
 }

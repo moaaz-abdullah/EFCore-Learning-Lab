@@ -29,5 +29,7 @@ namespace EFCore.Models
 
         // Navigation property for the related Department entity
         public Department Department { get; set; } = null!;
+                
+        public ICollection<StudentBook> Books { get; set; } = new List<StudentBook>();   
     }
 }
