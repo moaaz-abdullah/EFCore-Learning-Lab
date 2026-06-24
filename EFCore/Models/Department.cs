@@ -12,6 +12,8 @@ namespace EFCore.Models
 
         public string Name { get; set; } = null!;
 
+        public string Description { get; set; }
+
         // Navigation property for the related Student entity
         public ICollection<Student> Students { get; set; } = new List<Student>();
     }

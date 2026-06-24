@@ -22,5 +22,10 @@ namespace EFCore
         public DbSet<Models.Book> Books { get; set; }
 
         public DbSet<Models.StudentBook> StudentBooks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>().Property(x => x.Description).IsRequired();
+        }
     }
 }

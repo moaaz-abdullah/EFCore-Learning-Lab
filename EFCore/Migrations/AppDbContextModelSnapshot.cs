@@ -41,7 +41,7 @@ namespace EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Department", b =>
@@ -58,7 +58,7 @@ namespace EFCore.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Grade", b =>
@@ -86,7 +86,7 @@ namespace EFCore.Migrations
                     b.HasIndex("StudentId")
                         .IsUnique();
 
-                    b.ToTable("Grades");
+                    b.ToTable("Grades", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Student", b =>
@@ -121,7 +121,7 @@ namespace EFCore.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.StudentBook", b =>
@@ -147,7 +147,7 @@ namespace EFCore.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentBooks");
+                    b.ToTable("StudentBooks", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Grade", b =>
