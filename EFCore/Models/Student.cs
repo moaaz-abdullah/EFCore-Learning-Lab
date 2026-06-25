@@ -13,23 +13,28 @@ namespace EFCore.Models
 
         public string Name { get; set; } = null!;
 
-        public string Email { get; set; } = null!; 
-        
+        public string Email { get; set; } = null!;
+
         public int Age { get; set; }
 
         public int Grade { get; set; }
-            
+
         public DateTime BirthDate { get; set; }
+
+        //// Navigation property for the related Attendance entity
+        //public Attendance Attendance { get; set; } = null!;
 
         // Navigation property for the related Grade entity
         public Grade GradeDetails { get; set; } = null!;
 
-        [ForeignKey("Department")]
-        public int DepartmentId { get; set; } // Foreign key for Department
-
         // Navigation property for the related Department entity
         public Department Department { get; set; } = null!;
-                
-        public ICollection<StudentBook> Books { get; set; } = new List<StudentBook>();   
+
+        [ForeignKey("Department")]  // Foreign key for Department
+        public int DepartmentId { get; set; }
+
+        public ICollection<StudentBook> Books { get; set; } = new List<StudentBook>();
+
+        public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
     }
 }

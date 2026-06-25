@@ -41,7 +41,7 @@ namespace EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Department", b =>
@@ -63,7 +63,7 @@ namespace EFCore.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Grade", b =>
@@ -91,7 +91,7 @@ namespace EFCore.Migrations
                     b.HasIndex("StudentId")
                         .IsUnique();
 
-                    b.ToTable("Grades");
+                    b.ToTable("Grades", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Student", b =>
@@ -126,7 +126,7 @@ namespace EFCore.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.StudentBook", b =>
@@ -152,7 +152,7 @@ namespace EFCore.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentBooks");
+                    b.ToTable("StudentBooks", (string)null);
                 });
 
             modelBuilder.Entity("EFCore.Models.Grade", b =>
@@ -160,7 +160,7 @@ namespace EFCore.Migrations
                     b.HasOne("EFCore.Models.Student", "Student")
                         .WithOne("GradeDetails")
                         .HasForeignKey("EFCore.Models.Grade", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Student");
@@ -171,7 +171,7 @@ namespace EFCore.Migrations
                     b.HasOne("EFCore.Models.Department", "Department")
                         .WithMany("Students")
                         .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Department");
@@ -182,13 +182,13 @@ namespace EFCore.Migrations
                     b.HasOne("EFCore.Models.Book", "Book")
                         .WithMany("Students")
                         .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EFCore.Models.Student", "Student")
                         .WithMany("Books")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Book");
