@@ -39,14 +39,27 @@ namespace EFCore
             //    .HasOne(g => g.GradeDetails)
             //    .WithOne(s => s.Student)
             //    .OnDelete(DeleteBehavior.SetNull);
+
+            //foreach (var relationship in modelBuilder.Model.GetEntityTypes()
+            //    .SelectMany(t => t.GetForeignKeys()))
+            //{
+            //    relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            //}
+
             #endregion
 
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes()
-                .SelectMany(t => t.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            }
+            // Using Fluent API to
+            // configure the table name and schema for the Attendance entity
+            // configure the column name and type for the DayName property in the Attendance entity
 
+            modelBuilder.Entity<Attendance>().ToTable("StudentAttendances", "std");
+
+            modelBuilder.Entity<Attendance>().Property(a => a.DayName)
+                .HasColumnName("NameOfTheDay")
+                .HasColumnType("nvarchar(20)");
+
+            // This property will not be mapped to the database
+            modelBuilder.Entity<Attendance>().Ignore(a => a.Date);
         }
     }
 }

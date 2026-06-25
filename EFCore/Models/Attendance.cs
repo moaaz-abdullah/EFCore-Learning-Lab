@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCore.Models
 {
-    [Table("StudentAttendances", Schema = "std")]
+    // [Table("StudentAttendances", Schema = "std")]
     public class Attendance
     {
         [Key]
         public int Id { get; set; }
 
-        [Column("NameOfTheDay", TypeName = "nvarchar(20)")]
+        // [Column("NameOfTheDay", TypeName = "nvarchar(20)")]
         public string DayName { get; set; }
 
         [ForeignKey("Student")]
@@ -21,7 +21,7 @@ namespace EFCore.Models
         // Navigation property to Student
         public Student Student { get; set; }
 
-        [NotMapped] // This property will not be mapped to the database
+        // [NotMapped] // This property will not be mapped to the database
         public DateTime Date { get; set; }
 
     }
