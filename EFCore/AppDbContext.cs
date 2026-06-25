@@ -25,6 +25,8 @@ namespace EFCore
 
         public DbSet<Models.Attendance> Attendances { get; set; }
 
+        public DbSet<Models.Invoice> Invoices { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region
@@ -60,6 +62,21 @@ namespace EFCore
 
             // This property will not be mapped to the database
             modelBuilder.Entity<Attendance>().Ignore(a => a.Date);
+
+
+            // Using Fluent API to configure the Invoice entity 
+            modelBuilder.Entity<Invoice>().Property(f => f.CustomerFullname)
+                .HasComputedColumnSql("CONCAT([CustomerFirstName], ' ', [CustomerLastName])");
+
+            modelBuilder.Entity<Invoice>().Property(t => t.Total)
+                .HasComputedColumnSql("[Quantity] * [Price]");
+
+            modelBuilder.Entity<Invoice>().Property(d => d.CreatedDate)
+                .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Invoice>().Property(q=>q.Quantity)
+                .HasDefaultValue(1);
+
         }
     }
 }
