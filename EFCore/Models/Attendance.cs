@@ -12,6 +12,7 @@ namespace EFCore.Models
         [Key]
         public int Id { get; set; }
 
+        [Column("NameOfTheDay", TypeName = "nvarchar(20)")]
         public string DayName { get; set; }
 
         [ForeignKey("Student")]
@@ -19,6 +20,9 @@ namespace EFCore.Models
 
         // Navigation property to Student
         public Student Student { get; set; }
+
+        [NotMapped] // This property will not be mapped to the database
+        public DateTime Date { get; set; }
 
     }
 }
