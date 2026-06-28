@@ -15,7 +15,9 @@ namespace EFCore.Models
         public string? Author { get; set; }
 
         public DateTime Created { get; set; }
-    
+
         public ICollection<StudentBook> Students { get; set; } = new List<StudentBook>();
+
+        public int DeliveryOrder { get; set; }
     }
 }

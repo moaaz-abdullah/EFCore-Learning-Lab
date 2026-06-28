@@ -286,13 +286,3 @@ Currently Learning:
 This is an educational project that evolves continuously as I learn new Entity Framework Core concepts.
 
 The repository is intentionally structured as a learning lab rather than a production-ready application.
-
----
-
-# 👨‍💻 Author
-
-Muaz Abdullah
-
-Backend Development & Data Engineering Learner
-
-Focused on building strong foundations in .NET, Entity Framework Core, SQL Server, and modern backend development.

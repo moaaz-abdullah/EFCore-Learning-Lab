@@ -74,8 +74,23 @@ namespace EFCore
             modelBuilder.Entity<Invoice>().Property(d => d.CreatedDate)
                 .HasDefaultValueSql("GETDATE()");
 
-            modelBuilder.Entity<Invoice>().Property(q=>q.Quantity)
+            modelBuilder.Entity<Invoice>().Property(q => q.Quantity)
                 .HasDefaultValue(1);
+
+            // Create a composite index on the Name and Email properties of the Student entity
+            modelBuilder.Entity<Student>().HasIndex(s => new { s.Name, s.Email });
+
+            modelBuilder.HasSequence<int>("Delivery Order")
+                .StartsAt(1000)
+                .IncrementsBy(1);
+
+            modelBuilder.Entity<Book>()
+                .Property(b => b.DeliveryOrder)
+                .HasDefaultValueSql("NEXT VALUE FOR [Delivery Order]");
+        
+            modelBuilder.Entity<Student>()
+                .Property(s => s.DeliveryOrder)
+                .HasDefaultValueSql("NEXT VALUE FOR [Delivery Order]");
 
         }
     }
